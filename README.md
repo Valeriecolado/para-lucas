@@ -59,3 +59,140 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+/* styles.css */
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #fff0f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffe4e1;
+}
+
+header h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #ff69b4;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ff69b4;
+    font-weight: bold;
+}
+
+section {
+    padding: 2rem;
+    text-align: center;
+}
+
+section h2 {
+    font-family: 'Great Vibes', cursive;
+    color: #ff69b4;
+    margin-bottom: 1rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #ffe4e1;
+    color: #ff69b4;
+}
+
+textarea {
+    width: 80%;
+    height: 100px;
+    margin-bottom: 1rem;
+}
+
+button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff1493;
+}
+// script.js
+
+// Ejemplo de reacción con botones
+document.addEventListener('DOMContentLoaded', function() {
+    const notas = document.querySelector('.notas');
+    const fotos = document.querySelector('.fotos');
+    const canciones = document.querySelector('.canciones');
+    const poemas = document.querySelector('.poemas');
+
+    // Añadir una nota
+    const nuevaNota = document.createElement('div');
+    nuevaNota.classList.add('nota');
+    nuevaNota.innerHTML = `
+        <p>Te amo más cada día.</p>
+        <button class="reaccion">❤️</button>
+    `;
+    notas.appendChild(nuevaNota);
+
+    // Añadir una foto
+    const nuevaFoto = document.createElement('div');
+    nuevaFoto.classList.add('foto');
+    nuevaFoto.innerHTML = `
+        <img src="tu-foto.jpg" alt="Nosotros">
+        <button class="reaccion">❤️</button>
+    `;
+    fotos.appendChild(nuevaFoto);
+
+    // Añadir una canción
+    const nuevaCancion = document.createElement('div');
+    nuevaCancion.classList.add('cancion');
+    nuevaCancion.innerHTML = `
+        <a href="tu-cancion.mp3" target="_blank">Nuestra Canción</a>
+        <button class="reaccion">❤️</button>
+    `;
+    canciones.appendChild(nuevaCancion);
+
+    // Añadir un poema
+    const nuevoPoema = document.createElement('div');
+    nuevoPoema.classList.add('poema');
+    nuevoPoema.innerHTML = `
+        <p>Rosas son rojas, violetas son azules, mi amor por ti, nunca se reduce.</p>
+        <button class="reaccion">❤️</button>
+    `;
+    poemas.appendChild(nuevoPoema);
+
+    // Añadir evento a los botones de reacción
+    document.querySelectorAll('.reaccion').forEach(button => {
+        button.addEventListener('click', function() {
+            alert('¡Gracias por tu reacción!');
+        });
+    });
+
+    // Manejar el envío del formulario
+    document.getElementById('respuestaForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const noteContent = e.target.querySelector('textarea').value;
+        if (noteContent) {
+            alert(`Tu respuesta: "${noteContent}" ha sido enviada.`);
+            e.target.reset();
+        } else {
+            alert('Por favor, escribe algo antes de enviar.');
+        }
+    });
+});
